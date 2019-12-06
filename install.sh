@@ -1,4 +1,4 @@
-# change directory to home
+# change directory to home at first
 cd ~
 
 # set symlink
