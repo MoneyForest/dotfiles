@@ -1,3 +1,9 @@
+[core]
+    editor = vim
+[color]
+    branch = auto
+    diff = auto
+    status = auto
 [user]
     name = MoneyForest
     email = kanamorishuhei@gmail.com
