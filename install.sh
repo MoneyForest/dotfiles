@@ -2,4 +2,4 @@
 cd ~
 
 # set symlink
-ln -snf dotfiles/gitconfig ~/.gitconfig
+ln -snf ~/develop/dotfiles/gitconfig ~/.gitconfig
