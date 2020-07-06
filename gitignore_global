@@ -1,3 +1,15 @@
+# macOS
 .DS_Store
-tags
+
+# JetBrains
 .idea/
+out/
+cmake-build-*/
+.idea_modules/
+
+# vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
