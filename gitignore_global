@@ -13,3 +13,8 @@ cmake-build-*/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Ruby
+vendor/bundle
+.bundle/config
+.rakeTasks
