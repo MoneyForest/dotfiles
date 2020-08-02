@@ -19,7 +19,6 @@ set fileformats=unix,dos,mac
 " 表示関連
 set showmatch         " 括弧の対応をハイライト
 set showcmd           " 入力中のコマンドを表示
-set number            " 行番号表示
 set wrap              " 画面幅で折り返す
 "set list              " 不可視文字表示
 set notitle           " タイトル書き換えない
