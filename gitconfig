@@ -1,7 +1,7 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore_global
-	autocrlf = input
+    autocrlf = input
 [color]
     branch = auto
     diff = auto
