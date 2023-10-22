@@ -1,0 +1,109 @@
+tap "homebrew/bundle"
+tap "homebrew/services"
+# All in one for **env
+brew "anyenv"
+# GitOps Continuous Delivery for Kubernetes
+brew "argocd"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Cross-platform make
+brew "cmake"
+# Validate and define text-based and dynamic configuration
+brew "cue"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Good-lookin' diffs with diff-highlight and more
+brew "diff-so-fancy"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Remote repository management made easy
+brew "ghq"
+# Access GitHub's .gitignore boilerplates
+brew "gibo"
+# Distributed revision control system
+brew "git"
+# Prevents you from committing sensitive information to a git repo
+brew "git-secrets"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Fast linters runner for Go
+brew "golangci-lint"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Improved top (interactive process viewer)
+brew "htop"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Template-free customization of Kubernetes YAML manifests
+brew "kustomize"
+# Postgres C API library
+brew "libpq"
+# Open source relational database management system
+brew "mysql"
+# Platform built on V8 to build network applications
+brew "node"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# Simplistic interactive filtering tool
+brew "peco"
+# General-purpose scripting language
+brew "php"
+# C++ class libraries for building network and internet-based applications
+brew "poco"
+brew "redis"
+# Editor of encrypted files
+brew "sops"
+# Simplified and community-driven man pages
+brew "tldr"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Linter for YAML files
+brew "yamllint"
+# JavaScript package manager
+brew "yarn"
+# Tracks most-used directories to make cd smarter
+brew "z"
+# Securely stores and accesses AWS credentials in a development environment
+cask "aws-vault"
+vscode "asdine.cue"
+vscode "brody715.vscode-cuelang"
+vscode "DavidAnson.vscode-markdownlint"
+vscode "dbaeumer.vscode-eslint"
+vscode "donjayamanne.githistory"
+vscode "dsznajder.es7-react-js-snippets"
+vscode "eamodio.gitlens"
+vscode "EditorConfig.EditorConfig"
+vscode "esbenp.prettier-vscode"
+vscode "GitHub.codespaces"
+vscode "GitHub.copilot"
+vscode "GitHub.copilot-chat"
+vscode "GitHub.remotehub"
+vscode "github.vscode-github-actions"
+vscode "GitHub.vscode-pull-request-github"
+vscode "golang.go"
+vscode "hashicorp.terraform"
+vscode "hediet.vscode-drawio"
+vscode "jallen7usa.vscode-cue-fmt"
+vscode "jasonnutter.vscode-codeowners"
+vscode "matangover.mypy"
+vscode "ms-azuretools.vscode-docker"
+vscode "MS-CEINTL.vscode-language-pack-ja"
+vscode "ms-python.autopep8"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode.azure-repos"
+vscode "ms-vscode.makefile-tools"
+vscode "ms-vscode.remote-repositories"
+vscode "ms-vsliveshare.vsliveshare"
+vscode "nickgo.cuelang"
+vscode "oderwat.indent-rainbow"
+vscode "redhat.vscode-yaml"
+vscode "tamasfe.even-better-toml"
+vscode "Vue.volar"
