@@ -22,6 +22,7 @@
 
 [alias]
     b = branch
+    bda = "!git branch | grep -v \"master\" | xargs git branch -D"
     cm = commit
     co = checkout
     cob = checkout -b
