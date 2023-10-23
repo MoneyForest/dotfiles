@@ -24,6 +24,6 @@ Configuration files are organized into directories based on their category.
 
 1. Run the install script
 
-    ```bash
+    ```zsh
     ./bin/install.sh
     ```
