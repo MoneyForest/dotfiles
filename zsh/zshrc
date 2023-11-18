@@ -88,7 +88,9 @@ if [ -f "/$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
 fi
 
 # ASDF
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+if [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
+    . /opt/homebrew/opt/asdf/libexec/asdf.sh
+fi
 
 # z
 . `brew --prefix`/etc/profile.d/z.sh
