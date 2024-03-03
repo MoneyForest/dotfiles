@@ -62,6 +62,9 @@ export RBENV_ROOT="$HOME/.anyenv/envs/rbenv"
 export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init - zsh)"
 
+# Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Tfenv
 export TFENV_ROOT="$HOME/.anyenv/envs/tfenv"
 export PATH="$TFENV_ROOT/bin:$PATH"
@@ -73,7 +76,9 @@ eval "$(direnv hook zsh)"
 # Aliases & PATH Extensions
 # ------------------------------------
 
-export PATH="$HOME/go/bin:$PATH"
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # Kubernetes
 alias k=kubectl
@@ -94,3 +99,14 @@ fi
 
 # z
 . `brew --prefix`/etc/profile.d/z.sh
+
+# bat
+alias cat="bat -p"
+
+# ------------------------------------
+# Include Private Settings
+# ------------------------------------
+
+if [[ -s "$HOME/.zsh_private" ]]; then
+  source "$HOME/.zsh_private"
+fi
