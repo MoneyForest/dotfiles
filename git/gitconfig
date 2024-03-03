@@ -17,6 +17,11 @@
 [pull]
     rebase = false
 
+[rebase]
+	autostash = true
+	autosquash = true
+    abbreviateCommands = true
+
 [interactive]
     diffFilter = diff-so-fancy
 
@@ -38,8 +43,8 @@
     vcs = git
     root = ~/go/src
 
-[url "git@github.com:"]
-    insteadOf = https://github.com/
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 
 [filter "lfs"]
     process = git-lfs filter-process
