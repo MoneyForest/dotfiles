@@ -24,7 +24,7 @@ for dotfile key in ${(kv)dotfiles}; do
 done
 
 # Link Prezto configurations
-prezto_files=("zlogin" "zlogout" "zpreztorc" "zprofile", "zshenv", "zshrc")
+prezto_files=("zlogin" "zlogout" "zpreztorc" "zprofile" "zshenv" "zshrc")
 
 for file in "${prezto_files[@]}"; do
   if [ -f "$current_dir/zsh/$file" ]; then
@@ -45,4 +45,16 @@ if type brew &>/dev/null; then
   fi
 else
   echo "Homebrew not found. Please install Homebrew first."
+fi
+
+# Link .zprezto from submodule
+if [ -d "$current_dir/.zprezto" ]; then
+  ln -sf "$current_dir/.zprezto" ~/.zprezto
+else
+  echo "Warning: .zprezto directory does not exist and was not linked."
+fi
+
+# Add dotfiles root path to the beginning of .zshrc
+if ! grep -q "export DOTFILES_ROOT=" ~/.zshrc; then
+  echo "export DOTFILES_ROOT=\"$current_dir\"" | cat - ~/.zshrc > temp && mv temp ~/.zshrc
 fi
