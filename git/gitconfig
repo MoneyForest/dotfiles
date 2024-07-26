@@ -18,8 +18,8 @@
     rebase = false
 
 [rebase]
-	autostash = true
-	autosquash = true
+    autostash = true
+    autosquash = true
     abbreviateCommands = true
 
 [interactive]
@@ -44,7 +44,7 @@
     root = ~/go/src
 
 [url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
 
 [filter "lfs"]
     process = git-lfs filter-process
@@ -53,5 +53,5 @@
     smudge = git-lfs smudge -- %f
 
 [credential]
-	helper = !aws codecommit credential-helper $@
-	UseHttpPath = true
+    helper = !aws codecommit credential-helper $@
+    UseHttpPath = true
