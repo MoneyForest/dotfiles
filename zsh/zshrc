@@ -5,6 +5,9 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Brew for Apple Silicon
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Source Prezto from submodule.
 if [[ -s "${DOTFILES_ROOT}/.zprezto/init.zsh" ]]; then
   source "${DOTFILES_ROOT}/.zprezto/init.zsh"
