@@ -1,0 +1,116 @@
+# ------------------------------------
+# Homebrew
+# ------------------------------------
+export PATH="/opt/homebrew/bin:$PATH"
+
+# ------------------------------------
+# Prezto
+# ------------------------------------
+source "$HOME/.zprezto/init.zsh"
+
+# ------------------------------------
+# Editor
+# ------------------------------------
+export EDITOR=vim
+
+# ------------------------------------
+# LSCOLORS
+# ------------------------------------
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
+# ------------------------------------
+# Completion
+# ------------------------------------
+autoload -Uz compinit
+compinit
+
+# ------------------------------------
+# Peco
+# ------------------------------------
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
+
+function peco-history-selection() {
+  BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | peco)
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^[' peco-history-selection
+
+# ------------------------------------
+# Environment Tools
+# ------------------------------------
+
+# Anyenv
+if [ -e "$HOME/.anyenv" ]; then
+  export ANYENV_ROOT="$HOME/.anyenv"
+  export PATH="$ANYENV_ROOT/bin:$PATH"
+  if command -v anyenv 1>/dev/null 2>&1; then
+    eval "$(anyenv init -)"
+  fi
+fi
+
+# Pyenv
+export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+# Rbenv
+export RBENV_ROOT="$HOME/.anyenv/envs/rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init - zsh)"
+
+# Tfenv
+export TFENV_ROOT="$HOME/.anyenv/envs/tfenv"
+export PATH="$TFENV_ROOT/bin:$PATH"
+
+# Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Direnv
+eval "$(direnv hook zsh)"
+
+# ------------------------------------
+# Aliases & PATH Extensions
+# ------------------------------------
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# Kubernetes
+alias k=kubectl
+
+# ASDF
+if [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
+fi
+
+# z
+. "$(brew --prefix)/etc/profile.d/z.sh"
+
+# bat
+alias cat="bat -p"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# ------------------------------------
+# Include Private Settings
+# ------------------------------------
+if [[ -s "$HOME/.zsh_private" ]]; then
+  source "$HOME/.zsh_private"
+fi

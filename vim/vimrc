@@ -1,0 +1,50 @@
+" === エンコーディング関連 ===
+set encoding=utf-8
+set fileencodings=utf-8,euc-jp,iso-2022-jp,cp932,sjis
+set fileformats=unix,dos,mac
+
+" === カラーリング & 表示関連 ===
+" カラースキーム
+colorscheme default
+" シンタックスハイライト
+syntax on
+" メニュー表示のカスタマイズ
+highlight Pmenu ctermbg=lightcyan ctermfg=black
+highlight PmenuSel ctermbg=blue ctermfg=black
+highlight PmenuSbar ctermbg=darkgray
+highlight PmenuThumb ctermbg=lightgray
+highlight Comment ctermfg=blue
+" マッチングの括弧をハイライト
+set showmatch
+" 入力中のコマンドを表示
+set showcmd
+" テキストを画面幅で折り返す
+set wrap
+" タイトルの書き換えを防止
+set notitle
+" 指定した行数分の範囲でスクロール
+set scrolloff=5
+
+" === ファイルタイプ関連 ===
+filetype indent on
+filetype plugin on
+
+" === Tab関連 ===
+" タブの幅を2に設定
+set tabstop=2
+" タブキーでのインデント幅
+set softtabstop=0
+" タブを空白文字に展開
+set expandtab
+
+" === 検索関連 ===
+" 検索が最後まで行ったら先頭から再開
+set wrapscan
+" 大文字小文字を区別しない検索
+set ignorecase
+" 検索ワードが大文字を含む場合は大文字小文字を区別
+set smartcase
+" 入力時にリアルタイムで検索
+set incsearch
+" 検索ワードをハイライト表示
+set hlsearch
