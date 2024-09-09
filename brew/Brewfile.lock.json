@@ -2,10 +2,10 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "725aaa7f43971c2a9e08a0667255abdbb595ca3d"
+        "revision": "753199dbccbca69fca47313750f6d2fcb38140c5"
       },
       "homebrew/services": {
-        "revision": "1b1dacf5a108501ca953d083aaa4d77b1af35061"
+        "revision": "a06200d55943f1e173ac8aa8c98dd71f0329a142"
       }
     },
     "brew": {
@@ -1251,7 +1251,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.19",
+        "HOMEBREW_VERSION": "4.3.20",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
