@@ -109,7 +109,7 @@ case ":$PATH:" in
 esac
 
 # mysql
-# asdfでmysqlを入れると.zprezto/modules/utility/init.zsh でmysqlが上書きされるため、ここでunaliasする
+# .zprezto/modules/utility/init.zsh でmysqlが上書きされるため、ここでunaliasする
 # asdfでインストールしたMySQLコマンドが正しく使用できるようにunaliasしている
 unalias mysql
 
