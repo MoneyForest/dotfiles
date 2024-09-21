@@ -3,3 +3,4 @@ helm 3.11.2
 kubectl 1.26.3
 kustomize 5.0.1
 mysql 8.0.33
+sops 3.7.3
