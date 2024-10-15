@@ -100,7 +100,7 @@
   "workbench.productIconTheme": "jetbrains-idea-product-icon-theme",
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 16,
-  "workbench.view.alwaysShowHeaderActions": true
+  "workbench.view.alwaysShowHeaderActions": true,
   "[go]": {
     "editor.defaultFormatter": "golang.go",
     "editor.formatOnSave": true,
@@ -140,5 +140,5 @@
   "[typescript]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2
-  },
+  }
 }
