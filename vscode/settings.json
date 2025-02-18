@@ -43,7 +43,11 @@
   "files.autoGuessEncoding": true,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
-  "files.candidateGuessEncodings": ["utf8", "shiftjis", "eucjp"],
+  "files.candidateGuessEncodings": [
+    "utf8",
+    "shiftjis",
+    "eucjp"
+  ],
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -85,6 +89,7 @@
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Default Dark+",
   "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.enablePreview": true,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.pinnedTabsOnSeparateRow": true,
@@ -137,14 +142,18 @@
     "editor.tabSize": 2
   },
   "go.toolsManagement.autoUpdate": true,
-  "workbench.editor.enablePreview": false,
   "roo-cline.allowedCommands": [
     "npm test",
     "npm install",
     "tsc",
     "git log",
     "git diff",
-    "git show"
+    "git show",
+    "pnpm install",
+    "pnpm build"
   ],
-  "terminal.integrated.fontSize": 11
+  "terminal.integrated.fontSize": 11,
+  "yaml.schemas": {
+    "file:///Users/kanamori.shuhei/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
+  }
 }
