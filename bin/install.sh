@@ -36,14 +36,16 @@ for file in "${prezto_files[@]}"; do
 done
 
 # Link VSCode settings
-code_settings_src="$current_dir/vscode/settings.json"
+settings_src="$current_dir/vscode/settings.json"
 code_settings_dest="$HOME/Library/Application Support/Code/User/settings.json"
+cursor_settings_dest="$HOME/Library/Application Support/Cursor/User/settings.json"
 
-if [ -f "$code_settings_src" ]; then
-  ln -sf "$code_settings_src" "$code_settings_dest"
-  echo "Info: VSCode settings.json was linked."
+if [ -f "$settings_src" ]; then
+  ln -sf "$settings_src" "$code_settings_dest"
+  ln -sf "$settings_src" "$cursor_settings_dest"
+  echo "Info: settings.json was linked."
 else
-  echo "Warning: VSCode settings.json does not exist and was not linked."
+  echo "Warning: settings.json does not exist and was not linked."
 fi
 
 # Initialize and update the submodule (for Prezto)
