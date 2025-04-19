@@ -39,10 +39,14 @@
   "editor.wrappingIndent": "indent",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "explorer.confirmPasteNative": false,
   "explorer.sortOrder": "type",
   "files.autoGuessEncoding": true,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
+  "files.associations": {
+    "*.json5": "jsonc"
+  },
   "files.candidateGuessEncodings": [
     "utf8",
     "shiftjis",
@@ -68,6 +72,7 @@
   "git.suggestSmartCommit": false,
   "githubPullRequests.pullBranch": "never",
   "gitlens.ai.experimental.model": "openai:gpt-4o",
+  "go.toolsManagement.autoUpdate": true,
   "hediet.vscode-drawio.resizeImages": null,
   "makefile.configureOnOpen": true,
   "redhat.telemetry.enabled": true,
@@ -80,6 +85,7 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.fontSize": 11,
   "terminal.integrated.enableImages": true,
   "terminal.integrated.enableVisualBell": true,
   "terminal.integrated.mouseWheelZoom": true,
@@ -102,6 +108,9 @@
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 16,
   "workbench.view.alwaysShowHeaderActions": true,
+  "yaml.schemas": {
+    "file:///Users/kanamori.shuhei/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
+  },
   "[go]": {
     "editor.defaultFormatter": "golang.go",
     "editor.formatOnSave": true,
@@ -126,6 +135,10 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2
   },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+  },
   "[ruby]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
@@ -142,7 +155,9 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2
   },
-  "go.toolsManagement.autoUpdate": true,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
   "roo-cline.allowedCommands": [
     "npm test",
     "npm install",
@@ -152,9 +167,5 @@
     "git show",
     "pnpm install",
     "pnpm build"
-  ],
-  "terminal.integrated.fontSize": 11,
-  "yaml.schemas": {
-    "file:///Users/kanamori.shuhei/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
-  }
+  ]
 }

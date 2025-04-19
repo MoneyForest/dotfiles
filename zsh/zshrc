@@ -107,11 +107,16 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+alias pn=pnpm
 
 # mysql
 # .zprezto/modules/utility/init.zsh でmysqlが上書きされるため、ここでunaliasする
 # asdfでインストールしたMySQLコマンドが正しく使用できるようにunaliasしている
 unalias mysql
+
+# Cline
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(cursor --locate-shell-integration-path zsh)"
 
 # ------------------------------------
 # Include Private Settings

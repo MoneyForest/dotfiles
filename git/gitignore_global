@@ -58,6 +58,11 @@ auto-save-list
 tramp
 .\#*
 
+# AI Tools #
+############
+.clinerules
+.cursorrules
+
 # プログラミング言語やフレームワーク関連 #
 ####################################
 
