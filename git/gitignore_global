@@ -93,3 +93,7 @@ yarn-error.log
 *.zip
 *.rar
 *.7z
+
+# 個人用スクリプト置き場 #
+######################
+.moneyforest/
