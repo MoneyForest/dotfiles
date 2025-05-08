@@ -76,6 +76,16 @@
   "hediet.vscode-drawio.resizeImages": null,
   "makefile.configureOnOpen": true,
   "redhat.telemetry.enabled": true,
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show",
+    "pnpm install",
+    "pnpm build"
+  ],
   "scm.alwaysShowRepositories": true,
   "scm.defaultViewMode": "tree",
   "scm.diffDecorationsGutterWidth": 5,
@@ -110,6 +120,9 @@
   "workbench.view.alwaysShowHeaderActions": true,
   "yaml.schemas": {
     "file:///Users/kanamori.shuhei/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "[go]": {
     "editor.defaultFormatter": "golang.go",
@@ -154,18 +167,5 @@
   "[typescript]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2
-  },
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
-  "roo-cline.allowedCommands": [
-    "npm test",
-    "npm install",
-    "tsc",
-    "git log",
-    "git diff",
-    "git show",
-    "pnpm install",
-    "pnpm build"
-  ]
+  }
 }
