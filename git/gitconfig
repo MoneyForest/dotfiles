@@ -26,6 +26,7 @@
     diffFilter = diff-so-fancy
 
 [alias]
+    po = pull origin main
     b = branch
     bda = "!git branch | grep -v \"master\" | xargs git branch -D"
     cm = commit

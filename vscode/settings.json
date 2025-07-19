@@ -135,9 +135,13 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2
   },
+  "[yml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
+  },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   "[ruby]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
