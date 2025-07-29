@@ -62,6 +62,8 @@ tramp
 ############
 .clinerules
 .cursorrules
+.cursor
+.claude/settings.local.json
 
 # プログラミング言語やフレームワーク関連 #
 ####################################
@@ -97,3 +99,7 @@ yarn-error.log
 # 個人用スクリプト置き場 #
 ######################
 .moneyforest/
+
+# env file #
+######################
+.envrc

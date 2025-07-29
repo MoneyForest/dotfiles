@@ -47,6 +47,17 @@ zle -N peco-history-selection
 bindkey '^[' peco-history-selection
 
 # ------------------------------------
+# AI Tools
+# ------------------------------------
+
+# Claude Code
+# ref: https://docs.anthropic.com/ja/docs/claude-code/settings
+export DISABLE_AUTOUPDATER=1
+export DISABLE_ERROR_REPORTING=1
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS=5000 # https://zenn.dev/pepabo/articles/d7de82614e2f0b
+export MAX_THINKING_TOKENS=31999 # https://x.com/zuma_lab/status/1937418117984190496
+
+# ------------------------------------
 # Environment Tools
 # ------------------------------------
 
