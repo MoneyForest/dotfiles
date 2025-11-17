@@ -79,7 +79,7 @@ if [ -f "$current_dir/asdf/.tool-versions" ]; then
   while IFS=' ' read -r tool version || [ -n "$tool" ]; do
     asdf plugin add "$tool" 2>/dev/null || true
     asdf install "$tool" "$version"
-    asdf set --global "$tool" "$version"
+    asdf set -u "$tool" "$version"
   done < "$current_dir/asdf/.tool-versions"
 else
   echo "Warning: .tool-versions file not found in $current_dir/asdf/"
