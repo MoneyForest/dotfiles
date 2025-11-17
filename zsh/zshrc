@@ -142,3 +142,11 @@ unalias mysql
 if [[ -s "$HOME/.zsh_private" ]]; then
   source "$HOME/.zsh_private"
 fi
+
+# ------------------------------------
+# AWS Settings
+# ------------------------------------
+export AWS_ASSUME_ROLE_TTL=1h
+export AWS_CONFIG_FILE=~/.aws/config
+export AWS_REGION=ap-northeast-1
+export AWS_DEFAULT_REGION=ap-northeast-1
