@@ -66,9 +66,9 @@ fi
 
 # Check for Homebrew and run brew bundle if Brewfile exists
 if type brew &>/dev/null; then
-  if [ -f "$current_dir/Brew/Brewfile" ]; then
+  if [ -f "$current_dir/brew/Brewfile" ]; then
     echo "Found Brewfile. Installing brew packages..."
-    brew bundle --file="$current_dir/Brew/Brewfile"
+    brew bundle --file="$current_dir/brew/Brewfile"
   fi
 else
   echo "Homebrew not found. Please install Homebrew first."
@@ -79,7 +79,7 @@ if [ -f "$current_dir/asdf/.tool-versions" ]; then
   while IFS=' ' read -r tool version || [ -n "$tool" ]; do
     asdf plugin add "$tool" 2>/dev/null || true
     asdf install "$tool" "$version"
-    asdf global "$tool" "$version"
+    asdf set --global "$tool" "$version"
   done < "$current_dir/asdf/.tool-versions"
 else
   echo "Warning: .tool-versions file not found in $current_dir/asdf/"

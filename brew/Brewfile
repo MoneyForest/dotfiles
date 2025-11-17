@@ -28,6 +28,6 @@ brew "tree"
 brew "yamllint"
 
 cask "1password-cli"
-cask "aws-vault"
-cask "google-cloud-sdk"
+cask "aws-vault-binary"
+cask "gcloud-cli"
 cask "sequel-ace"
