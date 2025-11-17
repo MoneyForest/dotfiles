@@ -73,14 +73,22 @@ if [ -e "$HOME/.anyenv" ]; then
 fi
 
 # Pyenv
-export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+if [ -d "$HOME/.anyenv/envs/pyenv" ]; then
+  export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init --path)"
+  fi
+fi
 
 # Rbenv
-export RBENV_ROOT="$HOME/.anyenv/envs/rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init - zsh)"
+if [ -d "$HOME/.anyenv/envs/rbenv" ]; then
+  export RBENV_ROOT="$HOME/.anyenv/envs/rbenv"
+  export PATH="$RBENV_ROOT/bin:$PATH"
+  if command -v rbenv 1>/dev/null 2>&1; then
+    eval "$(rbenv init - zsh)"
+  fi
+fi
 
 # Tfenv
 export TFENV_ROOT="$HOME/.anyenv/envs/tfenv"
@@ -90,7 +98,9 @@ export PATH="$TFENV_ROOT/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Direnv
-eval "$(direnv hook zsh)"
+if command -v direnv 1>/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
 
 # ------------------------------------
 # Aliases & PATH Extensions
@@ -109,7 +119,12 @@ if [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
 fi
 
 # z
-. "$(brew --prefix)/etc/profile.d/z.sh"
+if command -v brew 1>/dev/null 2>&1; then
+  z_script="$(brew --prefix)/etc/profile.d/z.sh"
+  if [ -f "$z_script" ]; then
+    . "$z_script"
+  fi
+fi
 
 # bat
 alias cat="bat -p"

@@ -24,6 +24,22 @@ for dotfile key in ${(kv)dotfiles}; do
 done
 
 # Link Prezto configurations
+# Initialize and update the submodule (for Prezto)
+git submodule update --init --recursive
+
+# Link .zprezto directory to home directory
+if [ -d "$current_dir/.zprezto" ]; then
+  if [ -e ~/.zprezto ] && [ ! -L ~/.zprezto ]; then
+    echo "Warning: ~/.zprezto already exists and is not a symlink. Skipping link creation."
+  else
+    ln -sf "$current_dir/.zprezto" ~/.zprezto
+    echo "Info: .zprezto directory was linked."
+  fi
+else
+  echo "Warning: .zprezto directory does not exist. Make sure submodule is initialized."
+fi
+
+# Link Prezto configuration files
 prezto_files=("zlogin" "zlogout" "zpreztorc" "zprofile" "zshenv" "zshrc")
 
 for file in "${prezto_files[@]}"; do
@@ -47,9 +63,6 @@ if [ -f "$settings_src" ]; then
 else
   echo "Warning: settings.json does not exist and was not linked."
 fi
-
-# Initialize and update the submodule (for Prezto)
-git submodule update --init --recursive
 
 # Check for Homebrew and run brew bundle if Brewfile exists
 if type brew &>/dev/null; then
