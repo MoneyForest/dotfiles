@@ -1,0 +1,12 @@
+# Prevent recursive symlink in zprezto
+.zprezto/.zprezto
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.swp
+*.swo
+*~
