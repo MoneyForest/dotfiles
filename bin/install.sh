@@ -68,20 +68,17 @@ done
 info "Initializing git submodules..."
 git submodule update --init --recursive
 
-# Link .zprezto directory to home directory
-if [ -d "$current_dir/.zprezto" ]; then
+# Link prezto directory to ~/.zprezto
+if [ -d "$current_dir/prezto" ]; then
   if [ -e ~/.zprezto ] && [ ! -L ~/.zprezto ]; then
     warn "~/.zprezto already exists and is not a symlink. Skipping link creation"
   else
-    ln -sf "$current_dir/.zprezto" ~/.zprezto
-    info ".zprezto directory was linked"
+    ln -sf "$current_dir/prezto" ~/.zprezto
+    info "Prezto directory was linked to ~/.zprezto"
   fi
 else
-  warn ".zprezto directory does not exist. Make sure submodule is initialized"
+  warn "prezto directory does not exist. Make sure submodule is initialized"
 fi
-
-# Remove recursive symlink if it was created by submodule init
-rm -f "$current_dir/.zprezto/.zprezto"
 
 # Link Prezto configuration files
 prezto_files=("zlogin" "zlogout" "zpreztorc" "zprofile" "zshenv" "zshrc")
