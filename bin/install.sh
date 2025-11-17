@@ -80,6 +80,9 @@ else
   warn "prezto directory does not exist. Make sure submodule is initialized"
 fi
 
+# Remove any recursive symlinks that may have been created
+rm -f "$current_dir/prezto/prezto"
+
 # Link Prezto configuration files
 prezto_files=("zlogin" "zlogout" "zpreztorc" "zprofile" "zshenv" "zshrc")
 
