@@ -123,6 +123,26 @@ else
   warn "Claude Code settings.json does not exist and was not linked"
 fi
 
+# Pull Docker images for MCP servers
+if command -v docker &>/dev/null; then
+  info "Pulling Docker images for MCP servers..."
+
+  docker_images=(
+    "hashicorp/terraform-mcp-server:latest"
+    "mcp/aws-documentation:latest"
+  )
+
+  for image in "${docker_images[@]}"; do
+    if docker pull "$image" 2>/dev/null; then
+      info "Pulled Docker image: $image"
+    else
+      warn "Failed to pull Docker image: $image"
+    fi
+  done
+else
+  warn "Docker not found. MCP servers requiring Docker will not work without pulling images manually."
+fi
+
 # Install Claude Code MCP servers
 if command -v claude &>/dev/null; then
   info "Installing Claude Code MCP servers..."
@@ -141,8 +161,8 @@ if command -v claude &>/dev/null; then
     if claude mcp list 2>/dev/null | grep -q "^$server_name"; then
       info "MCP server '$server_name' already exists, skipping"
     else
-      # Add MCP server
-      if claude mcp add -s user -t "$transport" "$server_name" $command $args 2>/dev/null; then
+      # Add MCP server - need to use eval to properly split args
+      if eval "claude mcp add -s user -t '$transport' '$server_name' -- $command $args" 2>/dev/null; then
         info "Added MCP server: $server_name"
       else
         warn "Failed to add MCP server: $server_name"
