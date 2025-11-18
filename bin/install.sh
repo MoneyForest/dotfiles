@@ -110,6 +110,29 @@ else
   warn "settings.json does not exist and was not linked"
 fi
 
+# Link Claude Code settings
+claude_dir="$HOME/.claude"
+mkdir -p "$claude_dir"
+
+claude_settings_src="$current_dir/claude/settings.json"
+claude_settings_dest="$claude_dir/settings.json"
+
+if [ -f "$claude_settings_src" ]; then
+  ln -sf "$claude_settings_src" "$claude_settings_dest" && info "Claude Code settings.json was linked" || warn "Failed to link Claude Code settings"
+else
+  warn "Claude Code settings.json does not exist and was not linked"
+fi
+
+# Link Claude Code MCP configuration
+claude_mcp_src="$current_dir/claude/mcp.json"
+claude_mcp_dest="$claude_dir/mcp.json"
+
+if [ -f "$claude_mcp_src" ]; then
+  ln -sf "$claude_mcp_src" "$claude_mcp_dest" && info "Claude Code mcp.json was linked" || warn "Failed to link Claude Code MCP configuration"
+else
+  warn "Claude Code mcp.json does not exist and was not linked"
+fi
+
 # Install Homebrew packages
 if [ -f "$current_dir/brew/Brewfile" ]; then
   info "Installing Homebrew packages from Brewfile..."
