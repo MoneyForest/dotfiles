@@ -110,6 +110,72 @@ else
   warn "settings.json does not exist and was not linked"
 fi
 
+# Link Claude Code settings
+claude_dir="$HOME/.claude"
+mkdir -p "$claude_dir"
+
+claude_settings_src="$current_dir/claude/settings.json"
+claude_settings_dest="$claude_dir/settings.json"
+
+if [ -f "$claude_settings_src" ]; then
+  ln -sf "$claude_settings_src" "$claude_settings_dest" && info "Claude Code settings.json was linked" || warn "Failed to link Claude Code settings"
+else
+  warn "Claude Code settings.json does not exist and was not linked"
+fi
+
+# Install Claude Code MCP servers
+if command -v claude &>/dev/null; then
+  info "Installing Claude Code MCP servers..."
+
+  # Define MCP servers to install
+  mcp_servers=(
+    "terraform-mcp-server|stdio|docker|run --rm --interactive hashicorp/terraform-mcp-server"
+    "aws-documentation-mcp-server|stdio|docker|run --rm --interactive --env FASTMCP_LOG_LEVEL=ERROR --env AWS_DOCUMENTATION_PARTITION=aws mcp/aws-documentation:latest"
+    "aws-knowledge-mcp-server|stdio|npx|mcp-remote https://knowledge-mcp.global.api.aws"
+  )
+
+  for server_config in "${mcp_servers[@]}"; do
+    IFS='|' read -r server_name transport command args <<< "$server_config"
+
+    # Check if server already exists
+    if claude mcp list 2>/dev/null | grep -q "^$server_name"; then
+      info "MCP server '$server_name' already exists, skipping"
+    else
+      # Add MCP server
+      if claude mcp add -s user -t "$transport" "$server_name" $command $args 2>/dev/null; then
+        info "Added MCP server: $server_name"
+      else
+        warn "Failed to add MCP server: $server_name"
+      fi
+    fi
+  done
+else
+  warn "Claude Code CLI not found. Install Claude Code to enable MCP server setup."
+fi
+
+# Link LaunchAgents
+if [ -d "$current_dir/launchagents" ]; then
+  info "Linking LaunchAgents..."
+  mkdir -p ~/Library/LaunchAgents
+
+  for plist in "$current_dir/launchagents"/*.plist; do
+    if [ -f "$plist" ]; then
+      plist_name=$(basename "$plist")
+      plist_path=~/Library/LaunchAgents/"$plist_name"
+
+      ln -sf "$plist" "$plist_path" && info "Linked $plist_name"
+
+      # Load the LaunchAgent
+      if launchctl list | grep -q "${plist_name%.plist}"; then
+        launchctl unload "$plist_path" 2>/dev/null
+      fi
+      launchctl load "$plist_path" && info "Loaded $plist_name"
+    fi
+  done
+else
+  warn "launchagents directory not found"
+fi
+
 # Install Homebrew packages
 if [ -f "$current_dir/brew/Brewfile" ]; then
   info "Installing Homebrew packages from Brewfile..."
