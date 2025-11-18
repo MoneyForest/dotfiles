@@ -123,46 +123,6 @@ else
   warn "Claude Code settings.json does not exist and was not linked"
 fi
 
-# Install Claude Code MCP servers
-if command -v claude &>/dev/null && [ -f "$current_dir/claude/mcp.json" ]; then
-  info "Installing Claude Code MCP servers..."
-
-  # Read MCP configuration and install each server
-  if command -v jq &>/dev/null; then
-    # Extract server names from mcp.json
-    server_names=$(jq -r '.mcpServers | keys[]' "$current_dir/claude/mcp.json" 2>/dev/null)
-
-    if [ -n "$server_names" ]; then
-      echo "$server_names" | while read -r server_name; do
-        # Check if server already exists
-        if claude mcp list 2>/dev/null | grep -q "^$server_name"; then
-          info "MCP server '$server_name' already exists, skipping"
-        else
-          # Extract server configuration
-          server_type=$(jq -r ".mcpServers[\"$server_name\"].type" "$current_dir/claude/mcp.json")
-          server_command=$(jq -r ".mcpServers[\"$server_name\"].command" "$current_dir/claude/mcp.json")
-          server_args=$(jq -r ".mcpServers[\"$server_name\"].args | join(\" \")" "$current_dir/claude/mcp.json")
-
-          # Add MCP server
-          if claude mcp add -s user -t "$server_type" "$server_name" $server_command $server_args 2>/dev/null; then
-            info "Added MCP server: $server_name"
-          else
-            warn "Failed to add MCP server: $server_name"
-          fi
-        fi
-      done
-    fi
-  else
-    warn "jq is not installed. Skipping MCP server installation. Install jq to enable automatic MCP setup."
-  fi
-else
-  if [ ! -f "$current_dir/claude/mcp.json" ]; then
-    warn "Claude Code mcp.json does not exist"
-  elif ! command -v claude &>/dev/null; then
-    warn "Claude Code CLI not found. Install Claude Code to enable MCP server setup."
-  fi
-fi
-
 # Install Homebrew packages
 if [ -f "$current_dir/brew/Brewfile" ]; then
   info "Installing Homebrew packages from Brewfile..."
