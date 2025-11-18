@@ -153,29 +153,6 @@ else
   warn "Claude Code CLI not found. Install Claude Code to enable MCP server setup."
 fi
 
-# Link LaunchAgents
-if [ -d "$current_dir/launchagents" ]; then
-  info "Linking LaunchAgents..."
-  mkdir -p ~/Library/LaunchAgents
-
-  for plist in "$current_dir/launchagents"/*.plist; do
-    if [ -f "$plist" ]; then
-      plist_name=$(basename "$plist")
-      plist_path=~/Library/LaunchAgents/"$plist_name"
-
-      ln -sf "$plist" "$plist_path" && info "Linked $plist_name"
-
-      # Load the LaunchAgent
-      if launchctl list | grep -q "${plist_name%.plist}"; then
-        launchctl unload "$plist_path" 2>/dev/null
-      fi
-      launchctl load "$plist_path" && info "Loaded $plist_name"
-    fi
-  done
-else
-  warn "launchagents directory not found"
-fi
-
 # Install Homebrew packages
 if [ -f "$current_dir/brew/Brewfile" ]; then
   info "Installing Homebrew packages from Brewfile..."
