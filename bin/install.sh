@@ -123,6 +123,36 @@ else
   warn "Claude Code settings.json does not exist and was not linked"
 fi
 
+# Install Claude Code MCP servers
+if command -v claude &>/dev/null; then
+  info "Installing Claude Code MCP servers..."
+
+  # Define MCP servers to install
+  mcp_servers=(
+    "terraform-mcp-server|stdio|docker|run --rm --interactive hashicorp/terraform-mcp-server"
+    "aws-documentation-mcp-server|stdio|docker|run --rm --interactive --env FASTMCP_LOG_LEVEL=ERROR --env AWS_DOCUMENTATION_PARTITION=aws mcp/aws-documentation:latest"
+    "aws-knowledge-mcp-server|stdio|npx|mcp-remote https://knowledge-mcp.global.api.aws"
+  )
+
+  for server_config in "${mcp_servers[@]}"; do
+    IFS='|' read -r server_name transport command args <<< "$server_config"
+
+    # Check if server already exists
+    if claude mcp list 2>/dev/null | grep -q "^$server_name"; then
+      info "MCP server '$server_name' already exists, skipping"
+    else
+      # Add MCP server
+      if claude mcp add -s user -t "$transport" "$server_name" $command $args 2>/dev/null; then
+        info "Added MCP server: $server_name"
+      else
+        warn "Failed to add MCP server: $server_name"
+      fi
+    fi
+  done
+else
+  warn "Claude Code CLI not found. Install Claude Code to enable MCP server setup."
+fi
+
 # Install Homebrew packages
 if [ -f "$current_dir/brew/Brewfile" ]; then
   info "Installing Homebrew packages from Brewfile..."
