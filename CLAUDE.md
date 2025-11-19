@@ -62,3 +62,34 @@ The shell configuration manages multiple tool paths:
 
 ### Private Configuration
 Supports private settings via `~/.zsh_private` for sensitive or machine-specific configurations.
+
+## Documentation Output Style
+
+When creating Markdown documentation (runbooks, procedures, incident reports):
+
+### Writing Guidelines
+- **Be concise**: Write only essential information
+- **Bullet points over paragraphs**: Use lists for procedures and steps
+- **No obvious explanations**: Skip common knowledge items (e.g., "verify deployment worked", "check logs", "monitor metrics")
+- **Action-focused**: Start with verbs (Deploy, Check, Update, Rollback)
+- **No fluff**: Avoid introductions, conclusions, or unnecessary context
+
+### Example of What NOT to Do
+```markdown
+## Post-Release Verification
+After releasing the application, it's important to verify that everything is working correctly.
+This includes checking application logs, monitoring system metrics, and confirming that users
+can access the service. You should also verify database connections and...
+```
+
+### Example of What TO DO
+```markdown
+## Post-Release
+- Deploy to production
+- Check error rates (< 1%)
+- Verify critical endpoints respond
+- Rollback if issues detected
+```
+
+### Mermaid Diagrams
+Use Mermaid for architecture and flow diagrams when helpful. Keep them simple and focused.
