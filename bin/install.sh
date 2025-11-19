@@ -123,35 +123,78 @@ else
   warn "Claude Code settings.json does not exist and was not linked"
 fi
 
-# Pull Docker images for MCP servers
-if command -v docker &>/dev/null; then
-  info "Pulling Docker images for MCP servers..."
-
-  docker_images=(
-    "hashicorp/terraform-mcp-server:latest"
-    "mcp/aws-documentation:latest"
-  )
-
-  for image in "${docker_images[@]}"; do
-    if docker pull "$image" 2>/dev/null; then
-      info "Pulled Docker image: $image"
-    else
-      warn "Failed to pull Docker image: $image"
-    fi
-  done
+# Install Homebrew packages
+if [ -f "$current_dir/brew/Brewfile" ]; then
+  info "Installing Homebrew packages from Brewfile..."
+  brew bundle --file="$current_dir/brew/Brewfile"
 else
-  warn "Docker not found. MCP servers requiring Docker will not work without pulling images manually."
+  warn "Brewfile not found at $current_dir/brew/Brewfile"
+fi
+
+# Initialize anyenv if needed
+if command -v anyenv &>/dev/null; then
+  info "Initializing anyenv..."
+  eval "$(anyenv init -)"
+
+  # Install anyenv-update plugin if not exists
+  if [ ! -d "$(anyenv root)/plugins/anyenv-update" ]; then
+    mkdir -p "$(anyenv root)/plugins"
+    git clone https://github.com/znz/anyenv-update.git "$(anyenv root)/plugins/anyenv-update"
+  fi
+else
+  warn "anyenv not found. Skipping anyenv initialization"
+fi
+
+# Install nodenv via anyenv for MCP servers
+if command -v anyenv &>/dev/null; then
+  info "Setting up nodenv via anyenv..."
+
+  # Install nodenv if not already installed
+  if ! anyenv versions 2>/dev/null | grep -q nodenv; then
+    info "Installing nodenv..."
+    anyenv install nodenv
+    eval "$(anyenv init -)"
+  else
+    info "nodenv is already installed"
+  fi
+
+  # Install Node.js LTS version
+  if command -v nodenv &>/dev/null; then
+    NODE_VERSION="24.11.1"  # Latest LTS version
+
+    if ! nodenv versions | grep -q "$NODE_VERSION"; then
+      info "Installing Node.js $NODE_VERSION..."
+      nodenv install "$NODE_VERSION"
+      nodenv global "$NODE_VERSION"
+      info "Node.js $NODE_VERSION installed and set as global"
+    else
+      info "Node.js $NODE_VERSION is already installed"
+    fi
+  fi
+else
+  warn "anyenv not found. Node.js will not be installed"
+fi
+
+# Check Node.js for MCP servers
+if ! command -v node &>/dev/null; then
+  warn "Node.js not found. MCP servers require Node.js to run."
+  warn "Please restart your terminal and run this script again after anyenv initialization."
+else
+  info "Node.js is installed: $(node --version)"
 fi
 
 # Install Claude Code MCP servers
 if command -v claude &>/dev/null; then
   info "Installing Claude Code MCP servers..."
 
-  # Define MCP servers to install
+  # Define MCP servers to install (all use npx, all are authentication-free)
+  # Note: WebFetch functionality is already built into Claude Code, so no separate fetch server needed
+  # Note: aws-knowledge-mcp-server replaces aws-documentation-mcp-server with additional regional features
   mcp_servers=(
-    "terraform-mcp-server|stdio|docker|run --rm --interactive hashicorp/terraform-mcp-server"
-    "aws-documentation-mcp-server|stdio|docker|run --rm --interactive --env FASTMCP_LOG_LEVEL=ERROR --env AWS_DOCUMENTATION_PARTITION=aws mcp/aws-documentation:latest"
+    "terraform-mcp-server|stdio|npx|-y terraform-mcp-server"
     "aws-knowledge-mcp-server|stdio|npx|mcp-remote https://knowledge-mcp.global.api.aws"
+    "memory|stdio|npx|-y @modelcontextprotocol/server-memory"
+    "sequential-thinking|stdio|npx|-y @modelcontextprotocol/server-sequential-thinking"
   )
 
   for server_config in "${mcp_servers[@]}"; do
@@ -171,14 +214,6 @@ if command -v claude &>/dev/null; then
   done
 else
   warn "Claude Code CLI not found. Install Claude Code to enable MCP server setup."
-fi
-
-# Install Homebrew packages
-if [ -f "$current_dir/brew/Brewfile" ]; then
-  info "Installing Homebrew packages from Brewfile..."
-  brew bundle --file="$current_dir/brew/Brewfile"
-else
-  warn "Brewfile not found at $current_dir/brew/Brewfile"
 fi
 
 # Install ASDF tools
