@@ -195,6 +195,8 @@ if command -v claude &>/dev/null; then
     "aws-knowledge-mcp-server|stdio|npx|mcp-remote https://knowledge-mcp.global.api.aws"
     "memory|stdio|npx|-y @modelcontextprotocol/server-memory"
     "sequential-thinking|stdio|npx|-y @modelcontextprotocol/server-sequential-thinking"
+    "playwright|stdio|npx|-y @playwright/mcp"
+    "context7|stdio|npx|-y @upstash/context7-mcp"
   )
 
   for server_config in "${mcp_servers[@]}"; do
@@ -212,6 +214,25 @@ if command -v claude &>/dev/null; then
       fi
     fi
   done
+
+  # Install GitHub MCP server (requires authentication)
+  # Note: GitHub MCP server requires a Personal Access Token (PAT)
+  # Set GITHUB_PAT environment variable before running this script, or configure manually after installation
+  if ! claude mcp list 2>/dev/null | grep -q "^github"; then
+    if [ -n "$GITHUB_PAT" ]; then
+      info "Installing GitHub MCP server with authentication..."
+      if claude mcp add --transport http github https://api.githubcopilot.com/mcp -H "Authorization: Bearer $GITHUB_PAT" 2>/dev/null; then
+        info "Added GitHub MCP server"
+      else
+        warn "Failed to add GitHub MCP server. You may need to configure it manually."
+      fi
+    else
+      warn "GITHUB_PAT environment variable not set. Skipping GitHub MCP server installation."
+      warn "To install manually, run: claude mcp add --transport http github https://api.githubcopilot.com/mcp -H \"Authorization: Bearer YOUR_GITHUB_PAT\""
+    fi
+  else
+    info "GitHub MCP server already exists, skipping"
+  fi
 else
   warn "Claude Code CLI not found. Install Claude Code to enable MCP server setup."
 fi
