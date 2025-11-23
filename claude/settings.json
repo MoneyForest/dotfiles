@@ -26,6 +26,7 @@
       "Bash(sudo:*)",
       "Bash(chmod 777:*)",
       "Bash(terraform destroy:*)",
+      "Bash(terraform apply:*)",
       "Bash(terraform apply -destroy:*)",
       "Bash(terraform destroy -auto-approve:*)",
       "Bash(terraform apply -auto-approve:*)",
