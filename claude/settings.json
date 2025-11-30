@@ -59,7 +59,13 @@
       "Bash(aws-vault exec*aws * terminate-*)",
       "Bash(aws-vault exec*aws * run-*)",
       "Bash(aws-vault exec*aws * start-*)",
-      "Bash(aws-vault exec*aws * stop-*)"
+      "Bash(aws-vault exec*aws * stop-*)",
+      "Bash(gh pr merge:*)",
+      "Bash(gh pr merge *)",
+      "Bash(gh repo delete:*)",
+      "Bash(gh repo delete *)",
+      "Bash(gh release delete:*)",
+      "Bash(gh release delete *)"
     ]
   }
 }
