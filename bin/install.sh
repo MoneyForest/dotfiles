@@ -96,8 +96,11 @@ done
 
 # Link VSCode/Cursor settings
 settings_src="$current_dir/vscode/settings.json"
+extensions_src="$current_dir/vscode/extensions.json"
 code_settings_dest="$HOME/Library/Application Support/Code/User/settings.json"
+code_extensions_dest="$HOME/Library/Application Support/Code/User/extensions.json"
 cursor_settings_dest="$HOME/Library/Application Support/Cursor/User/settings.json"
+cursor_extensions_dest="$HOME/Library/Application Support/Cursor/User/extensions.json"
 
 if [ -f "$settings_src" ]; then
   # Create directories if they don't exist
@@ -108,6 +111,13 @@ if [ -f "$settings_src" ]; then
   ln -sf "$settings_src" "$cursor_settings_dest" 2>/dev/null && info "Cursor settings.json was linked" || warn "Cursor not installed, skipping settings link"
 else
   warn "settings.json does not exist and was not linked"
+fi
+
+if [ -f "$extensions_src" ]; then
+  ln -sf "$extensions_src" "$code_extensions_dest" 2>/dev/null && info "VSCode extensions.json was linked" || warn "VSCode not installed, skipping extensions link"
+  ln -sf "$extensions_src" "$cursor_extensions_dest" 2>/dev/null && info "Cursor extensions.json was linked" || warn "Cursor not installed, skipping extensions link"
+else
+  warn "extensions.json does not exist and was not linked"
 fi
 
 # Link Claude Code settings

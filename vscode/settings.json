@@ -121,6 +121,9 @@
   "yaml.schemas": {
     "file:///Users/kanamori.shuhei/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
   },
+  "cloudcode.geminiCodeAssist.enable": true,
+  "cloudcode.geminiCodeAssist.codeCompletionEnabled": true,
+  "cloudcode.geminiCodeAssist.chatEnabled": true,
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
@@ -171,5 +174,6 @@
   "[typescript]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2
-  }
+  },
+  "geminicodeassist.project": "pioneering-will-pw9k9"
 }
