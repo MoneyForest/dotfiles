@@ -123,6 +123,38 @@ else
   warn "Claude Code settings.json does not exist and was not linked"
 fi
 
+# Link Claude Code CLAUDE.md
+claude_md_src="$current_dir/claude/CLAUDE.md"
+claude_md_dest="$claude_dir/CLAUDE.md"
+
+if [ -f "$claude_md_src" ]; then
+  ln -sf "$claude_md_src" "$claude_md_dest" && info "Claude Code CLAUDE.md was linked" || warn "Failed to link Claude Code CLAUDE.md"
+else
+  warn "Claude Code CLAUDE.md does not exist and was not linked"
+fi
+
+# Link Claude Code hooks directory
+claude_hooks_src="$current_dir/claude/hooks"
+claude_hooks_dest="$claude_dir/hooks"
+
+if [ -d "$claude_hooks_src" ]; then
+  mkdir -p "$claude_dir"
+  ln -sf "$claude_hooks_src" "$claude_hooks_dest" && info "Claude Code hooks directory was linked" || warn "Failed to link Claude Code hooks"
+else
+  warn "Claude Code hooks directory does not exist and was not linked"
+fi
+
+# Link Claude Code commands directory
+claude_commands_src="$current_dir/claude/commands"
+claude_commands_dest="$claude_dir/commands"
+
+if [ -d "$claude_commands_src" ]; then
+  mkdir -p "$claude_dir"
+  ln -sf "$claude_commands_src" "$claude_commands_dest" && info "Claude Code commands directory was linked" || warn "Failed to link Claude Code commands"
+else
+  warn "Claude Code commands directory does not exist and was not linked"
+fi
+
 # Install Homebrew packages
 if [ -f "$current_dir/brew/Brewfile" ]; then
   info "Installing Homebrew packages from Brewfile..."

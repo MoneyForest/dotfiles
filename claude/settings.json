@@ -1,7 +1,19 @@
 {
   "includeCoAuthoredBy": false,
   "model": "opus",
-  "alwaysThinkingEnabled": false,
+  "alwaysThinkingEnabled": true,
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/init-session.sh"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(git:*)",
