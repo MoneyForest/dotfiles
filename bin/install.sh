@@ -73,7 +73,7 @@ if [ -d "$current_dir/prezto" ]; then
   if [ -e ~/.zprezto ] && [ ! -L ~/.zprezto ]; then
     warn "~/.zprezto already exists and is not a symlink. Skipping link creation"
   else
-    ln -sf "$current_dir/prezto" ~/.zprezto
+    ln -sfn "$current_dir/prezto" ~/.zprezto
     info "Prezto directory was linked to ~/.zprezto"
   fi
 else
@@ -139,7 +139,7 @@ claude_hooks_dest="$claude_dir/hooks"
 
 if [ -d "$claude_hooks_src" ]; then
   mkdir -p "$claude_dir"
-  ln -sf "$claude_hooks_src" "$claude_hooks_dest" && info "Claude Code hooks directory was linked" || warn "Failed to link Claude Code hooks"
+  ln -sfn "$claude_hooks_src" "$claude_hooks_dest" && info "Claude Code hooks directory was linked" || warn "Failed to link Claude Code hooks"
 else
   warn "Claude Code hooks directory does not exist and was not linked"
 fi
@@ -150,7 +150,7 @@ claude_commands_dest="$claude_dir/commands"
 
 if [ -d "$claude_commands_src" ]; then
   mkdir -p "$claude_dir"
-  ln -sf "$claude_commands_src" "$claude_commands_dest" && info "Claude Code commands directory was linked" || warn "Failed to link Claude Code commands"
+  ln -sfn "$claude_commands_src" "$claude_commands_dest" && info "Claude Code commands directory was linked" || warn "Failed to link Claude Code commands"
 else
   warn "Claude Code commands directory does not exist and was not linked"
 fi
