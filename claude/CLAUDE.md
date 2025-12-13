@@ -115,6 +115,34 @@ Write PR descriptions following the Pull Request Template (`.github/pull_request
 - Do not use `main.tf`
 - Split resources by type/purpose into separate files (e.g., `ecs_cluster.tf`, `s3_log.tf`)
 
+### Variables vs Locals
+
+**Use `locals.tf` for values that don't need to be passed from outside. Only use `variables.tf` for values that must be configurable externally.**
+
+- **`variables.tf`**: For input variables that need to be passed from outside (e.g., via CLI, tfvars files, or module calls)
+- **`locals.tf`**: For internal values, computed values, or constants that don't need external input
+
+```hcl
+# BAD: Using variables.tf for internal-only values
+# variables.tf
+variable "app_name" {
+  default = "myapp"  # This never changes and isn't passed from outside
+}
+
+# GOOD: Use locals.tf for internal-only values
+# locals.tf
+locals {
+  app_name = "myapp"
+}
+
+# GOOD: Use variables.tf only when external input is needed
+# variables.tf
+variable "environment" {
+  description = "Environment name (dev/staging/prod)"
+  type        = string
+}
+```
+
 ### Resource Block Argument Order
 
 Follow the [HashiCorp Style Guide](https://developer.hashicorp.com/terraform/language/style):
