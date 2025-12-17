@@ -265,6 +265,34 @@ if command -v claude &>/dev/null; then
   else
     info "GitHub MCP server already exists, skipping"
   fi
+
+  # Install Datadog MCP server
+  # Note: Uses OAuth 2.0 for authentication (requires browser sign-in on first use)
+  # Alternatively, set DD_API_KEY and DD_APPLICATION_KEY environment variables for API key authentication
+  if ! claude mcp list 2>/dev/null | grep -q "^datadog-mcp"; then
+    info "Installing Datadog MCP server..."
+
+    # Check if API key authentication is preferred (via environment variables)
+    if [ -n "$DD_API_KEY" ] && [ -n "$DD_APPLICATION_KEY" ]; then
+      info "Using API key authentication for Datadog MCP server..."
+      if claude mcp add --transport http datadog-mcp https://mcp.datadoghq.com/api/unstable/mcp-server/mcp \
+        -H "DD_API_KEY: $DD_API_KEY" -H "DD_APPLICATION_KEY: $DD_APPLICATION_KEY" 2>/dev/null; then
+        info "Added Datadog MCP server with API key authentication"
+      else
+        warn "Failed to add Datadog MCP server with API keys"
+      fi
+    else
+      # Use OAuth 2.0 authentication (default)
+      if claude mcp add --transport http datadog-mcp https://mcp.datadoghq.com/api/unstable/mcp-server/mcp 2>/dev/null; then
+        info "Added Datadog MCP server (OAuth 2.0 authentication)"
+        info "You'll be prompted to authenticate via browser on first use"
+      else
+        warn "Failed to add Datadog MCP server"
+      fi
+    fi
+  else
+    info "Datadog MCP server already exists, skipping"
+  fi
 else
   warn "Claude Code CLI not found. Install Claude Code to enable MCP server setup."
 fi
