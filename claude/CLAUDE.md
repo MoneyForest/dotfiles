@@ -54,6 +54,23 @@ cat ~/.zsh_private | grep -i "datadog\|aws\|github"
 
 ## Git/PR Guidelines
 
+### Commit Message Philosophy and Priorities
+
+**Primary Priority: Conciseness and Clarity**
+- **MUST:** Follow the commit message template strictly
+- **MUST:** Avoid verbose expressions - be concise and to the point
+- **MUST:** Keep commit messages simple and focused on essential information
+
+**Secondary Priority: Commit Message Best Practices**
+- Apply the detailed commit message rules (Seven Rules) when appropriate
+- Use detailed explanations in the body only when truly necessary
+
+**Signature Policy**
+- **DO NOT** include the following signatures in commit messages:
+  - `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
+  - `Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>`
+- These signatures are unnecessary and add noise to commit history
+
 ### Commit Message Format
 
 Follow the [Angular Commit Message Format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format).
