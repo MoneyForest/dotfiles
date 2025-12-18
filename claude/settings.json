@@ -60,24 +60,9 @@
       "Bash(terraform untaint:*)",
       "Bash(terraform import:*)",
       "Bash(terraform refresh:*)",
-      "Bash(aws-vault exec*terraform apply*)",
-      "Bash(aws-vault exec*terraform destroy*)",
-      "Bash(aws-vault exec*aws * rm *)",
-      "Bash(aws-vault exec*aws * delete-*)",
-      "Bash(aws-vault exec*aws * create-*)",
-      "Bash(aws-vault exec*aws * modify-*)",
-      "Bash(aws-vault exec*aws * update-*)",
-      "Bash(aws-vault exec*aws * put-*)",
-      "Bash(aws-vault exec*aws * terminate-*)",
-      "Bash(aws-vault exec*aws * run-*)",
-      "Bash(aws-vault exec*aws * start-*)",
-      "Bash(aws-vault exec*aws * stop-*)",
       "Bash(gh pr merge:*)",
-      "Bash(gh pr merge *)",
       "Bash(gh repo delete:*)",
-      "Bash(gh repo delete *)",
-      "Bash(gh release delete:*)",
-      "Bash(gh release delete *)"
+      "Bash(gh release delete:*)"
     ]
   }
 }
