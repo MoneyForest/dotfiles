@@ -96,10 +96,15 @@ Follow the [Angular Commit Message Format](https://github.com/angular/angular/bl
     - Infrastructure/DevOps: `infra`, `terraform`, `k8s`, `docker`
     - CI/CD: `ci`
     - Specific services/components: `datadog`, `aws`, `auth`, `database`
-    - Documentation: `docs`
-  - **Avoid action-based scopes**: `install`, `setup`, `update`, `config`, `scripts`
-  - **Avoid vague names**: `tools`, `utils`, `misc`
-  - When changes affect the entire project, omit the scope
+  - **When to omit the scope**:
+    - Documentation-only changes (use `docs:` without scope)
+    - Dotfiles or configuration changes affecting the entire project
+    - Changes to project-wide guidelines or conventions
+    - When changes affect the entire project
+  - **Avoid these scope patterns**:
+    - Action-based: `install`, `setup`, `update`, `config`, `scripts`
+    - Directory names: `claude`, `bin`, `zsh`, `git`
+    - Vague names: `tools`, `utils`, `misc`, `docs`
 - **Summary**: Simple description, no trailing period
 
 Examples:
@@ -108,6 +113,8 @@ Examples:
 - `feat(ci): add automated testing workflow`
 - `feat(terraform): add RDS cluster configuration`
 - `docs: add setup instructions to README`
+- `docs: clarify commit message priorities`
+- `docs: update installation guide`
 
 ### Pull Request Description
 
