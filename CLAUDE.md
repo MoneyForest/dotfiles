@@ -1,1 +1,1 @@
-claude/CLAUDE.md
+/Users/shuheikanamori/.claude/CLAUDE.md
