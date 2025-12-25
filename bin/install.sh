@@ -297,6 +297,19 @@ else
   warn "Claude Code CLI not found. Install Claude Code to enable MCP server setup."
 fi
 
+# Install pre-commit
+if command -v pip3 &>/dev/null; then
+  if ! command -v pre-commit &>/dev/null; then
+    info "Installing pre-commit..."
+    pip3 install pre-commit
+    info "pre-commit installed successfully"
+  else
+    info "pre-commit is already installed"
+  fi
+else
+  warn "pip3 not found. Skipping pre-commit installation"
+fi
+
 # Install ASDF tools
 if [ -f "$current_dir/asdf/.tool-versions" ]; then
   info "Installing ASDF tools from .tool-versions..."

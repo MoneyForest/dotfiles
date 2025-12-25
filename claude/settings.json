@@ -1,19 +1,5 @@
 {
   "includeCoAuthoredBy": false,
-  "model": "opus",
-  "alwaysThinkingEnabled": true,
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/init-session.sh"
-          }
-        ]
-      }
-    ]
-  },
   "permissions": {
     "allow": [
       "Bash(git:*)",
@@ -64,5 +50,19 @@
       "Bash(gh repo delete:*)",
       "Bash(gh release delete:*)"
     ]
-  }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/init-session.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "alwaysThinkingEnabled": true,
+  "model": "sonnet"
 }
