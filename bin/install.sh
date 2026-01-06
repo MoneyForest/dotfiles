@@ -155,6 +155,17 @@ else
   warn "Claude Code commands directory does not exist and was not linked"
 fi
 
+# Link Claude Code rules directory
+claude_rules_src="$current_dir/claude/rules"
+claude_rules_dest="$claude_dir/rules"
+
+if [ -d "$claude_rules_src" ]; then
+  mkdir -p "$claude_dir"
+  ln -sfn "$claude_rules_src" "$claude_rules_dest" && info "Claude Code rules directory was linked" || warn "Failed to link Claude Code rules"
+else
+  warn "Claude Code rules directory does not exist and was not linked"
+fi
+
 # Install Homebrew packages
 if [ -f "$current_dir/brew/Brewfile" ]; then
   info "Installing Homebrew packages from Brewfile..."
