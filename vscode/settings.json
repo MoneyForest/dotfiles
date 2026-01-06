@@ -172,5 +172,7 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2
   },
-  "geminicodeassist.project": "pioneering-will-pw9k9"
+  "geminicodeassist.project": "pioneering-will-pw9k9",
+  "geminicodeassist.displayInlineContextHint": false,
+  "json.schemaDownload.enable": true
 }
