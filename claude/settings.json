@@ -63,6 +63,38 @@
       }
     ]
   },
+  "mcpServers": {
+    "terraform-mcp-server": {
+      "command": "npx",
+      "args": ["-y", "terraform-mcp-server"],
+      "transport": "stdio"
+    },
+    "aws-knowledge-mcp-server": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://knowledge-mcp.global.api.aws"],
+      "transport": "stdio"
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "transport": "stdio"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "transport": "stdio"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"],
+      "transport": "stdio"
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "transport": "stdio"
+    }
+  },
   "alwaysThinkingEnabled": true,
   "model": "sonnet"
 }

@@ -226,87 +226,12 @@ else
   info "Node.js is installed: $(node --version)"
 fi
 
-# Install Claude Code MCP servers
-if command -v claude &>/dev/null; then
-  info "Installing Claude Code MCP servers..."
-
-  # Define MCP servers to install (all use npx, all are authentication-free)
-  # Note: WebFetch functionality is already built into Claude Code, so no separate fetch server needed
-  # Note: aws-knowledge-mcp-server replaces aws-documentation-mcp-server with additional regional features
-  mcp_servers=(
-    "terraform-mcp-server|stdio|npx|-y terraform-mcp-server"
-    "aws-knowledge-mcp-server|stdio|npx|mcp-remote https://knowledge-mcp.global.api.aws"
-    "memory|stdio|npx|-y @modelcontextprotocol/server-memory"
-    "sequential-thinking|stdio|npx|-y @modelcontextprotocol/server-sequential-thinking"
-    "playwright|stdio|npx|-y @playwright/mcp"
-    "context7|stdio|npx|-y @upstash/context7-mcp"
-  )
-
-  for server_config in "${mcp_servers[@]}"; do
-    IFS='|' read -r server_name transport command args <<< "$server_config"
-
-    # Check if server already exists
-    if claude mcp list 2>/dev/null | grep -q "^$server_name"; then
-      info "MCP server '$server_name' already exists, skipping"
-    else
-      # Add MCP server - need to use eval to properly split args
-      if eval "claude mcp add -s user -t '$transport' '$server_name' -- $command $args" 2>/dev/null; then
-        info "Added MCP server: $server_name"
-      else
-        warn "Failed to add MCP server: $server_name"
-      fi
-    fi
-  done
-
-  # Install GitHub MCP server (requires authentication)
-  # Note: GitHub MCP server requires a Personal Access Token (PAT)
-  # Set GITHUB_PAT environment variable before running this script, or configure manually after installation
-  if ! claude mcp list 2>/dev/null | grep -q "^github"; then
-    if [ -n "$GITHUB_PAT" ]; then
-      info "Installing GitHub MCP server with authentication..."
-      if claude mcp add --transport http github https://api.githubcopilot.com/mcp -H "Authorization: Bearer $GITHUB_PAT" 2>/dev/null; then
-        info "Added GitHub MCP server"
-      else
-        warn "Failed to add GitHub MCP server. You may need to configure it manually."
-      fi
-    else
-      warn "GITHUB_PAT environment variable not set. Skipping GitHub MCP server installation."
-      warn "To install manually, run: claude mcp add --transport http github https://api.githubcopilot.com/mcp -H \"Authorization: Bearer YOUR_GITHUB_PAT\""
-    fi
-  else
-    info "GitHub MCP server already exists, skipping"
-  fi
-
-  # Install Datadog MCP server
-  # Note: Uses OAuth 2.0 for authentication (requires browser sign-in on first use)
-  # Alternatively, set DD_API_KEY and DD_APPLICATION_KEY environment variables for API key authentication
-  if ! claude mcp list 2>/dev/null | grep -q "^datadog-mcp"; then
-    info "Installing Datadog MCP server..."
-
-    # Check if API key authentication is preferred (via environment variables)
-    if [ -n "$DD_API_KEY" ] && [ -n "$DD_APPLICATION_KEY" ]; then
-      info "Using API key authentication for Datadog MCP server..."
-      if claude mcp add --transport http datadog-mcp https://mcp.datadoghq.com/api/unstable/mcp-server/mcp \
-        -H "DD_API_KEY: $DD_API_KEY" -H "DD_APPLICATION_KEY: $DD_APPLICATION_KEY" 2>/dev/null; then
-        info "Added Datadog MCP server with API key authentication"
-      else
-        warn "Failed to add Datadog MCP server with API keys"
-      fi
-    else
-      # Use OAuth 2.0 authentication (default)
-      if claude mcp add --transport http datadog-mcp https://mcp.datadoghq.com/api/unstable/mcp-server/mcp 2>/dev/null; then
-        info "Added Datadog MCP server (OAuth 2.0 authentication)"
-        info "You'll be prompted to authenticate via browser on first use"
-      else
-        warn "Failed to add Datadog MCP server"
-      fi
-    fi
-  else
-    info "Datadog MCP server already exists, skipping"
-  fi
-else
-  warn "Claude Code CLI not found. Install Claude Code to enable MCP server setup."
-fi
+# MCP servers are now managed via claude/settings.json
+# To configure authentication for GitHub and Datadog MCP servers:
+# - Set GITHUB_PAT environment variable in ~/.zsh_private for GitHub MCP
+# - Set DD_API_KEY and DD_APPLICATION_KEY in ~/.zsh_private for Datadog MCP
+# See claude/README.md for detailed setup instructions
+info "MCP servers are configured in claude/settings.json"
 
 # Install pre-commit
 if command -v pip3 &>/dev/null; then
