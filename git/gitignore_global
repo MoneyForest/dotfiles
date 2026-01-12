@@ -103,3 +103,8 @@ yarn-error.log
 # env file #
 ######################
 .envrc
+
+# Ignore CLAUDE.md files
+# for claude-mem plugin
+######################
+**/CLAUDE.md

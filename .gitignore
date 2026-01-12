@@ -34,3 +34,6 @@
 # Private configuration
 .zsh_private
 *.private
+
+# Ignore CLAUDE.md files except root
+**/CLAUDE.md
