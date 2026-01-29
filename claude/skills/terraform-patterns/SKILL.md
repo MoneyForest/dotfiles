@@ -12,6 +12,98 @@ description: Advanced Terraform design patterns and best practices. Use when des
 - 環境分離戦略の検討
 - State 管理方針の決定
 - リファクタリング時
+- コーディング規約の詳細確認
+
+## Coding Conventions (Examples)
+
+### Variables vs Locals
+
+```hcl
+# Bad: Using variables for internal-only values
+variable "app_name" {
+  default = "myapp"  # Never changes, not passed from outside
+}
+
+# Good: Use locals for internal values
+locals {
+  app_name = "myapp"
+}
+
+# Good: Use variables only for external input
+variable "environment" {
+  description = "Environment name (dev/staging/prod)"
+  type        = string
+}
+```
+
+### depends_on - Only for Implicit Dependencies
+
+```hcl
+# Bad: Redundant - dependency resolved through reference
+resource "aws_s3_bucket_versioning" "log" {
+  bucket     = aws_s3_bucket.log.id
+  depends_on = [aws_s3_bucket.log]  # Unnecessary
+}
+
+# Good: Dependencies auto-resolved through reference
+resource "aws_s3_bucket_versioning" "log" {
+  bucket = aws_s3_bucket.log.id
+}
+```
+
+### Security Group Rules - Separate Resources
+
+```hcl
+# Bad: Inline block
+resource "aws_security_group" "example" {
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+# Good: Separate resource
+resource "aws_security_group" "example" {
+  name   = "example"
+  vpc_id = aws_vpc.main.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "https" {
+  security_group_id = aws_security_group.example.id
+  from_port         = 443
+  to_port           = 443
+  ip_protocol       = "tcp"
+  cidr_ipv4         = "0.0.0.0/0"
+}
+```
+
+### IAM Policy - Use Data Source
+
+```hcl
+# Bad: Inline JSON
+resource "aws_iam_role_policy" "example" {
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [...]
+  })
+}
+
+# Good: Use aws_iam_policy_document
+data "aws_iam_policy_document" "example" {
+  statement {
+    effect    = "Allow"
+    actions   = ["s3:GetObject"]
+    resources = ["arn:aws:s3:::example-bucket/*"]
+  }
+}
+
+resource "aws_iam_policy" "example" {
+  name   = "example"
+  policy = data.aws_iam_policy_document.example.json
+}
+```
 
 ## Directory Structure（推奨）
 

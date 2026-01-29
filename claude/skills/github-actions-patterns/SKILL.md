@@ -15,6 +15,7 @@ description: GitHub Actions CI/CD implementation patterns. Use when designing wo
 - OIDC 認証の実装
 - パイプライン最適化
 - Reusable Workflow 設計
+- 3層アーキテクチャの詳細な例を確認
 
 ## Terraform CI/CD Pattern
 
