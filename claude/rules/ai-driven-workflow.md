@@ -18,7 +18,21 @@ Ask questions proactively to eliminate ambiguity and improve work quality.
 - Technical trade-offs are involved
 - Changes carry potential risks
 
-### 2. Concrete Options
+### 2. Use AskUserQuestion Tool
+
+**Always use the `AskUserQuestion` tool instead of text-based questions.**
+
+Benefits:
+- Users can select options with a single click
+- Reduces ambiguity in responses
+- Structured data makes follow-up easier
+
+The tool supports:
+- Single-select (default): User picks one option
+- Multi-select (`multiSelect: true`): User can pick multiple options
+- 2-4 options per question, 1-4 questions per call
+
+### 3. Concrete Options
 
 Always present specific options when asking questions. Avoid abstract questions.
 
@@ -40,7 +54,7 @@ B) Session (Server-side)
 How do you want to handle authentication?
 ```
 
-### 3. Plan-First Approach
+### 4. Plan-First Approach
 
 For complex tasks, present a plan and get approval before implementation.
 
