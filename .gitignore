@@ -1,0 +1,39 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.swp
+*.swo
+*~
+
+# Secrets and credentials
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+.env
+.env.*
+!.env.example
+*.secret
+*credentials*
+*secrets*
+.aws/credentials
+.ssh/id_*
+!.ssh/id_*.pub
+
+# API keys and tokens
+*apikey*
+*api_key*
+*token*
+!*token*.md
+
+# Private configuration
+.zsh_private
+*.private
+
+# Ignore CLAUDE.md files except root
+**/CLAUDE.md

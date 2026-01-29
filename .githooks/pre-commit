@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# Pre-commit hook to detect secrets using gitleaks
+#
+# This hook prevents committing files that contain sensitive information
+# such as API keys, passwords, tokens, and private keys.
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+echo -e "${YELLOW}Running gitleaks to check for secrets...${NC}"
+
+# Check if gitleaks is installed
+if ! command -v gitleaks &> /dev/null; then
+    echo -e "${RED}Error: gitleaks is not installed.${NC}"
+    echo "Install it with: brew install gitleaks"
+    exit 1
+fi
+
+# Run gitleaks on staged changes
+# --staged: Only check staged files
+# --verbose: Show detailed output
+if gitleaks protect --staged --verbose; then
+    echo -e "${GREEN}No secrets detected. Proceeding with commit.${NC}"
+    exit 0
+else
+    echo -e "${RED}Secrets detected! Commit aborted.${NC}"
+    echo ""
+    echo "Please remove the sensitive information before committing."
+    echo "If this is a false positive, you can:"
+    echo "  1. Add the pattern to .gitleaks.toml allowlist"
+    echo "  2. Use 'git commit --no-verify' to skip this check (not recommended)"
+    exit 1
+fi

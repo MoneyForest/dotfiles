@@ -1,0 +1,67 @@
+{
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(npm:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(node:*)",
+      "Bash(python:*)",
+      "Bash(pip:*)",
+      "Bash(go:*)",
+      "Bash(cargo:*)",
+      "Bash(make:*)",
+      "Bash(docker:*)",
+      "Bash(kubectl:*)",
+      "Bash(terraform:*)"
+    ],
+    "deny": [
+      "Read(**/*.pem)",
+      "Read(node_modules)",
+      "Read(.git)",
+      "Bash(git push -f origin main:*)",
+      "Bash(git push --force origin main:*)",
+      "Bash(git push --force-with-lease origin main:*)",
+      "Bash(git push -f origin master:*)",
+      "Bash(git push --force origin master:*)",
+      "Bash(git push --force-with-lease origin master:*)",
+      "Bash(sudo:*)",
+      "Bash(chmod 777:*)",
+      "Bash(terraform destroy:*)",
+      "Bash(terraform apply:*)",
+      "Bash(terraform apply -destroy:*)",
+      "Bash(terraform destroy -auto-approve:*)",
+      "Bash(terraform apply -auto-approve:*)",
+      "Bash(terraform state rm:*)",
+      "Bash(terraform state mv:*)",
+      "Bash(terraform state push:*)",
+      "Bash(terraform force-unlock:*)",
+      "Bash(terraform state replace-provider:*)",
+      "Bash(terraform init -migrate-state:*)",
+      "Bash(terraform init -reconfigure:*)",
+      "Bash(terraform init -force-copy:*)",
+      "Bash(terraform workspace delete:*)",
+      "Bash(terraform taint:*)",
+      "Bash(terraform untaint:*)",
+      "Bash(terraform import:*)",
+      "Bash(terraform refresh:*)",
+      "Bash(gh pr merge:*)",
+      "Bash(gh repo delete:*)",
+      "Bash(gh release delete:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/init-session.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "alwaysThinkingEnabled": true
+}

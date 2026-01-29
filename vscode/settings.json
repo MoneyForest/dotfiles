@@ -1,0 +1,178 @@
+{
+  "breadcrumbs.enabled": true,
+  "cursor.chat.narrowScrollbar": false,
+  "cursor.chat.terminalShowHoverHint": false,
+  "cursor.cmdk.autoSelect": false,
+  "cursor.cpp.enablePartialAccepts": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": true,
+  "editor.accessibilitySupport": "off",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "explicit",
+  "editor.cursorStyle": "line-thin",
+  "editor.dragAndDrop": false,
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  "editor.minimap.maxColumn": 80,
+  "editor.minimap.showSlider": "always",
+  "editor.mouseWheelZoom": true,
+  "editor.renderControlCharacters": true,
+  "editor.renderLineHighlight": "all",
+  "editor.renderLineHighlightOnlyWhenFocus": true,
+  "editor.renderWhitespace": "all",
+  "editor.showFoldingControls": "always",
+  "editor.smoothScrolling": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.suggest.preview": true,
+  "editor.suggest.showStatusBar": true,
+  "editor.suggestSelection": "first",
+  "editor.wordSegmenterLocales": "ja",
+  "editor.wordWrap": "on",
+  "editor.wrappingIndent": "indent",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmPasteNative": false,
+  "explorer.sortOrder": "type",
+  "files.autoGuessEncoding": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.associations": {
+    "*.json5": "jsonc"
+  },
+  "files.candidateGuessEncodings": [
+    "utf8",
+    "shiftjis",
+    "eucjp"
+  ],
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": "all",
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "git.pruneOnFetch": true,
+  "git.suggestSmartCommit": false,
+  "githubPullRequests.pullBranch": "never",
+  "gitlens.ai.experimental.model": "openai:gpt-4o",
+  "go.toolsManagement.autoUpdate": true,
+  "hediet.vscode-drawio.resizeImages": null,
+  "makefile.configureOnOpen": true,
+  "redhat.telemetry.enabled": true,
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show",
+    "pnpm install",
+    "pnpm build"
+  ],
+  "scm.alwaysShowRepositories": true,
+  "scm.defaultViewMode": "tree",
+  "scm.diffDecorationsGutterWidth": 5,
+  "scm.inputFontFamily": "editor",
+  "scm.inputFontSize": 14,
+  "search.showLineNumbers": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.fontSize": 11,
+  "terminal.integrated.enableImages": true,
+  "terminal.integrated.enableVisualBell": true,
+  "terminal.integrated.mouseWheelZoom": true,
+  "terminal.integrated.smoothScrolling": true,
+  "window.commandCenter": false,
+  "window.openFilesInNewWindow": "on",
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.labelFormat": "medium",
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "workbench.editor.scrollToSwitchTabs": true,
+  "workbench.editor.wrapTabs": true,
+  "workbench.layoutControl.enabled": false,
+  "workbench.list.smoothScrolling": true,
+  "workbench.productIconTheme": "jetbrains-idea-product-icon-theme",
+  "workbench.startupEditor": "none",
+  "workbench.tree.indent": 16,
+  "workbench.view.alwaysShowHeaderActions": true,
+  "yaml.schemas": {
+    "file:///Users/kanamori.shuhei/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[yml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "geminicodeassist.project": "pioneering-will-pw9k9",
+  "geminicodeassist.displayInlineContextHint": false,
+  "json.schemaDownload.enable": true
+}
