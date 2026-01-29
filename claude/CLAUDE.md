@@ -10,5 +10,6 @@ All project-specific instructions are split into topic-based files:
 - `rules/terraform.md` - Terraform coding standards (applies to `terraform/**/*.tf`)
 - `rules/github-actions.md` - GitHub Actions workflow architecture (applies to `.github/workflows/**/*.yml`)
 - `rules/dev-tools.md` - Development tools and utilities
+- `rules/ai-driven-workflow.md` - AI-driven conversation and confirmation workflow
 
 The rules are automatically loaded by Claude Code through the `.claude/rules` symlink.
