@@ -48,8 +48,7 @@ install_mcp_servers() {
     "aws-knowledge-mcp-server|stdio|npx|mcp-remote https://knowledge-mcp.global.api.aws"
     "aws-core-mcp-server|stdio|uvx|awslabs.core-mcp-server@latest"
     "memory|stdio|npx|-y @modelcontextprotocol/server-memory"
-    "sequential-thinking|stdio|npx|-y @modelcontextprotocol/server-sequential-thinking"
-    "playwright|stdio|npx|-y @playwright/mcp"
+    # "playwright|stdio|npx|-y @playwright/mcp"  # Browser automation (high context cost)
     "context7|stdio|npx|-y @upstash/context7-mcp"
   )
 
@@ -124,3 +123,4 @@ _install_datadog_mcp() {
     info "Datadog MCP server already exists, skipping"
   fi
 }
+
