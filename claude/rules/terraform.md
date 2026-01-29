@@ -1,5 +1,5 @@
 ---
-paths: terraform/**/*.tf
+paths: "terraform/**/*.tf"
 ---
 
 # Terraform Coding Guidelines

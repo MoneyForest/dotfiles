@@ -1,5 +1,5 @@
 ---
-paths: **/*.go
+paths: "**/*.go"
 ---
 
 # Go Coding Guidelines

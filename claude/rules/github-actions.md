@@ -1,5 +1,5 @@
 ---
-paths: .github/workflows/**/*.yml
+paths: ".github/workflows/**/*.yml"
 ---
 
 # GitHub Actions 3-Layer Architecture
