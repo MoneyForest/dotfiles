@@ -166,6 +166,17 @@ else
   warn "Claude Code rules directory does not exist and was not linked"
 fi
 
+# Link Claude Code skills directory
+claude_skills_src="$current_dir/claude/skills"
+claude_skills_dest="$claude_dir/skills"
+
+if [ -d "$claude_skills_src" ]; then
+  mkdir -p "$claude_dir"
+  ln -sfn "$claude_skills_src" "$claude_skills_dest" && info "Claude Code skills directory was linked" || warn "Failed to link Claude Code skills"
+else
+  warn "Claude Code skills directory does not exist and was not linked"
+fi
+
 # Install Homebrew packages
 if [ -f "$current_dir/brew/Brewfile" ]; then
   info "Installing Homebrew packages from Brewfile..."
