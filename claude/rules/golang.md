@@ -5,9 +5,9 @@ paths: **/*.go
 # Go Coding Guidelines
 
 ## Architecture
-- DDD + Clean Architecture を採用
-- 詳細は `/golang-patterns` スキルを参照
+- Follow project's existing patterns; if none exist, use DDD + Clean Architecture
+- See `/golang-patterns` skill for details
 
 ## Naming Conventions
-- ファイル名: snake_case
-- 関数名: CamelCase (exported), camelCase (unexported)
+- File names: snake_case
+- Functions: CamelCase (exported), camelCase (unexported)
