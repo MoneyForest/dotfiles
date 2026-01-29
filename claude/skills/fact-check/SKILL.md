@@ -15,17 +15,41 @@ description: Verify facts from Datadog and AWS before making changes. Use when i
 
 ## Step 1: Datadog確認
 
-Datadog APIキーをSSMから取得して確認する。
+### APIキーの取得方法
+
+Datadog API キーの取得方法をユーザーに確認する：
+
+1. **`~/.zsh_private`**: ローカルに環境変数として設定済み
+2. **SSM Parameter Store**: AWS から取得
+
+**ユーザーに確認**: 「Datadog API キーはどこから取得しますか？（~/.zsh_private / SSM Parameter Store）」
+
+#### Option A: ~/.zsh_private から取得
 
 ```bash
-# APIキー取得
+# ~/.zsh_private に以下のような設定がある前提
+# export DD_API_KEY="xxx"
+# export DD_APP_KEY="xxx"
+
+source ~/.zsh_private
+echo "DD_API_KEY: ${DD_API_KEY:0:8}..."  # 確認（一部のみ表示）
+```
+
+#### Option B: SSM Parameter Store から取得
+
+```bash
+# aws-vault profile と SSM パスをユーザーに確認してから実行
 DD_API_KEY=$(aws-vault exec <profile> -- aws ssm get-parameter \
   --name "<ssm-path-to-api-key>" --with-decryption \
   --query "Parameter.Value" --output text)
 DD_APP_KEY=$(aws-vault exec <profile> -- aws ssm get-parameter \
   --name "<ssm-path-to-app-key>" --with-decryption \
   --query "Parameter.Value" --output text)
+```
 
+### Datadog API 呼び出し
+
+```bash
 # モニター確認
 curl -s "https://api.datadoghq.com/api/v1/monitor/<monitor_id>" \
   -H "DD-API-KEY: ${DD_API_KEY}" -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" | jq
