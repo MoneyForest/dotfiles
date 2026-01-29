@@ -230,12 +230,14 @@ fi
 if command -v claude &>/dev/null; then
   info "Installing Claude Code MCP servers..."
 
-  # Define MCP servers to install (all use npx, all are authentication-free)
+  # Define MCP servers to install (all use npx/uvx, all are authentication-free)
   # Note: WebFetch functionality is already built into Claude Code, so no separate fetch server needed
   # Note: aws-knowledge-mcp-server replaces aws-documentation-mcp-server with additional regional features
+  # Note: aws-core-mcp-server should be installed first as it orchestrates other AWS MCP servers
   mcp_servers=(
     "terraform-mcp-server|stdio|npx|-y terraform-mcp-server"
     "aws-knowledge-mcp-server|stdio|npx|mcp-remote https://knowledge-mcp.global.api.aws"
+    "aws-core-mcp-server|stdio|uvx|awslabs.core-mcp-server@latest"
     "memory|stdio|npx|-y @modelcontextprotocol/server-memory"
     "sequential-thinking|stdio|npx|-y @modelcontextprotocol/server-sequential-thinking"
     "playwright|stdio|npx|-y @playwright/mcp"
