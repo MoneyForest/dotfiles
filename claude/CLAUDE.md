@@ -11,6 +11,7 @@ Minimal, essential rules loaded into every session:
 - `rules/git-commit.md` - Commit message format
 - `rules/terraform.md` - Terraform coding conventions
 - `rules/github-actions.md` - GitHub Actions 3-layer architecture
+- `rules/ai-driven-workflow.md` - AI-driven conversation and confirmation workflow
 
 ## Skills (On-Demand)
 
