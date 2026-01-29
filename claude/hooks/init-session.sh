@@ -1,8 +1,11 @@
 #!/bin/bash
-cat ~/.claude/CLAUDE.md
-cat ~/.claude/settings.json
+set -e
 
-# Check for repository-level CLAUDE.md
+if [ -f ~/.claude/settings.json ]; then
+  echo "=== Global Settings ==="
+  cat ~/.claude/settings.json
+fi
+
 if [ -f "./CLAUDE.md" ]; then
   echo "--- Repository CLAUDE.md ---"
   cat ./CLAUDE.md

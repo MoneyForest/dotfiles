@@ -14,7 +14,11 @@
       "Bash(make:*)",
       "Bash(docker:*)",
       "Bash(kubectl:*)",
-      "Bash(terraform:*)"
+      "Bash(terraform:*)",
+      "Bash(aws-vault:*)",
+      "Bash(aws:*)",
+      "Bash(curl:*)",
+      "Bash(infracost:*)"
     ],
     "deny": [
       "Read(**/*.pem)",

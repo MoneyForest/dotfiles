@@ -16,16 +16,6 @@ link_claude_settings() {
     warn "Claude Code settings.json does not exist and was not linked"
   fi
 
-  # Link Claude Code CLAUDE.md
-  local claude_md_src="$current_dir/claude/CLAUDE.md"
-  local claude_md_dest="$claude_dir/CLAUDE.md"
-
-  if [ -f "$claude_md_src" ]; then
-    ln -sf "$claude_md_src" "$claude_md_dest" && info "Claude Code CLAUDE.md was linked" || warn "Failed to link Claude Code CLAUDE.md"
-  else
-    warn "Claude Code CLAUDE.md does not exist and was not linked"
-  fi
-
   # Link Claude Code directories
   local directories=("hooks" "commands" "rules" "skills")
 
