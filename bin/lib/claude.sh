@@ -92,14 +92,14 @@ _install_github_mcp() {
   if ! claude mcp list 2>/dev/null | grep -q "^github"; then
     if [ -n "$GITHUB_PAT" ]; then
       info "Installing GitHub MCP server with authentication..."
-      if claude mcp add --transport http github https://api.githubcopilot.com/mcp -H "Authorization: Bearer $GITHUB_PAT" 2>/dev/null; then
+      if claude mcp add -s user --transport http github https://api.githubcopilot.com/mcp -H "Authorization: Bearer $GITHUB_PAT" 2>/dev/null; then
         info "Added GitHub MCP server"
       else
         warn "Failed to add GitHub MCP server. You may need to configure it manually."
       fi
     else
       warn "GITHUB_PAT environment variable not set. Skipping GitHub MCP server installation."
-      warn "To install manually, run: claude mcp add --transport http github https://api.githubcopilot.com/mcp -H \"Authorization: Bearer YOUR_GITHUB_PAT\""
+      warn "To install manually, run: claude mcp add -s user --transport http github https://api.githubcopilot.com/mcp -H \"Authorization: Bearer YOUR_GITHUB_PAT\""
     fi
   else
     info "GitHub MCP server already exists, skipping"
@@ -115,7 +115,7 @@ _install_datadog_mcp() {
     # Check if API key authentication is preferred (via environment variables)
     if [ -n "$DD_API_KEY" ] && [ -n "$DD_APPLICATION_KEY" ]; then
       info "Using API key authentication for Datadog MCP server..."
-      if claude mcp add --transport http datadog-mcp https://mcp.datadoghq.com/api/unstable/mcp-server/mcp \
+      if claude mcp add -s user --transport http datadog-mcp https://mcp.datadoghq.com/api/unstable/mcp-server/mcp \
         -H "DD_API_KEY: $DD_API_KEY" -H "DD_APPLICATION_KEY: $DD_APPLICATION_KEY" 2>/dev/null; then
         info "Added Datadog MCP server with API key authentication"
       else
@@ -123,7 +123,7 @@ _install_datadog_mcp() {
       fi
     else
       # Use OAuth 2.0 authentication (default)
-      if claude mcp add --transport http datadog-mcp https://mcp.datadoghq.com/api/unstable/mcp-server/mcp 2>/dev/null; then
+      if claude mcp add -s user --transport http datadog-mcp https://mcp.datadoghq.com/api/unstable/mcp-server/mcp 2>/dev/null; then
         info "Added Datadog MCP server (OAuth 2.0 authentication)"
         info "You'll be prompted to authenticate via browser on first use"
       else
