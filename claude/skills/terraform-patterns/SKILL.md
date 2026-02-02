@@ -1,6 +1,11 @@
 ---
 name: terraform-patterns
-description: Advanced Terraform design patterns and best practices. Use when designing modules, managing state, or implementing complex infrastructure patterns.
+description: Advanced Terraform design patterns including module composition, state management, testing strategies, and workspace organization. Use when designing reusable modules, managing complex state, or implementing infrastructure patterns. Trigger phrases: 'terraform modules', 'tf patterns', 'infrastructure as code', 'state management', 'Terraform設計', 'モジュール設計'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: infrastructure
+  tags: [terraform, iac, modules, aws, design-patterns]
 ---
 
 # Terraform Design Patterns

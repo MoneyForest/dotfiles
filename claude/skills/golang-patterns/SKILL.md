@@ -1,6 +1,11 @@
 ---
 name: golang-patterns
-description: DDD + Clean Architecture patterns for Go applications. Use when designing domain models, usecases, repositories, or implementing business logic.
+description: DDD + Clean Architecture patterns for Go applications including domain models, usecases, repositories, and error handling. Use when designing Go services, implementing business logic, or structuring new projects. Trigger phrases: 'go patterns', 'golang architecture', 'DDD', 'clean architecture', 'Go設計'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: development
+  tags: [golang, ddd, clean-architecture, design-patterns]
 ---
 
 # Go DDD + Clean Architecture Patterns
