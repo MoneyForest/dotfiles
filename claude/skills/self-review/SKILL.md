@@ -1,6 +1,11 @@
 ---
 name: self-review
-description: Self-review for PRs from a teammate perspective. Use after creating a PR to check code quality, security, performance, tests, and design with fresh eyes.
+description: Self-review checklist for PRs covering code quality, security, performance, testing, and design patterns. Use after completing implementation to review your own code with fresh eyes before requesting reviews. Trigger phrases: 'self review', 'pr review', 'code review', 'セルフレビュー', 'コードレビュー', 'PRチェック'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: review
+  tags: [code-review, quality, security, testing, best-practices]
 ---
 
 # Self-Review Skill

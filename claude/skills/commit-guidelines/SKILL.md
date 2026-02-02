@@ -1,6 +1,11 @@
 ---
 name: commit-guidelines
-description: Detailed commit message guidelines with Seven Rules and examples. Use when writing commits, reviewing PR titles, or learning commit best practices.
+description: Detailed commit message guidelines with Angular format, Seven Rules, and practical examples. Use when writing commits, reviewing PR titles, or learning commit message best practices. Trigger phrases: 'commit message', 'git commit', 'commit format', 'angular commit', 'コミットメッセージ', 'コミット規約'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: documentation
+  tags: [git, commit, conventions, documentation, best-practices]
 ---
 
 # Commit Message Guidelines

@@ -1,6 +1,11 @@
 ---
 name: fact-check
-description: Verify facts from Datadog and AWS before making changes. Use when investigating infrastructure state, validating user claims, or before modifying resources.
+description: Verification procedures for AWS and Datadog facts using API calls before making infrastructure changes. Use when investigating infrastructure state, validating user claims, or verifying configuration. Trigger phrases: 'fact check', 'verify', 'validate', 'check aws', 'ファクトチェック', '事実確認', '検証'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: workflow
+  tags: [verification, aws, datadog, infrastructure, validation]
 ---
 
 # Fact-Check Skill

@@ -1,6 +1,11 @@
 ---
 name: aws-terraform-review
-description: AWS infrastructure change review checklist for Terraform and GitHub Actions. Use when reviewing Terraform changes, AWS resource modifications, or CI/CD pipeline updates.
+description: AWS infrastructure change review checklist for Terraform including blast radius assessment, security validation, and rollback planning. Use when reviewing Terraform PRs, planning AWS changes, or assessing infrastructure modifications. Trigger phrases: 'terraform review', 'aws review', 'infrastructure review', 'Terraformレビュー', 'インフラレビュー', '変更確認'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: review
+  tags: [terraform, aws, code-review, infrastructure, security]
 ---
 
 # AWS Infrastructure Review Checklist

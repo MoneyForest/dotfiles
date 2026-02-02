@@ -1,6 +1,11 @@
 ---
 name: github-actions-patterns
-description: GitHub Actions CI/CD implementation patterns. Use when designing workflows, implementing OIDC auth, or optimizing pipeline performance.
+description: GitHub Actions CI/CD implementation patterns including OIDC authentication, reusable workflows, matrix builds, and caching strategies. Use when designing workflows, implementing secure deployments, or optimizing pipeline performance. Trigger phrases: 'github actions', 'cicd', 'workflow', 'oidc', 'GitHubワークフロー', 'CI/CD設計'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: infrastructure
+  tags: [github-actions, cicd, automation, oidc, workflows]
 ---
 
 # GitHub Actions CI/CD Patterns

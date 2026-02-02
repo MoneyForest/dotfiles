@@ -1,6 +1,11 @@
 ---
 name: structured-dialogue
-description: Detailed guide for structured dialogue with question templates, design patterns, and practical examples. Use when applying AI-DLC workflow for complex problem-solving.
+description: Structured dialogue guide with question templates, design patterns, and practical examples for complex problem-solving. Use when applying AI-DLC workflow, gathering requirements, or making architectural decisions. Trigger phrases: 'structured dialogue', 'ai-dlc', 'requirements gathering', '構造化対話', '要件定義', 'ヒアリング'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: workflow
+  tags: [dialogue, requirements, decision-making, ai-dlc, workflow]
 ---
 
 # Structured Dialogue Skill
