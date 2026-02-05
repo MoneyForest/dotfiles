@@ -1,6 +1,11 @@
 ---
 name: aws-security
-description: AWS infrastructure security best practices with Terraform examples. Use when configuring IAM, Security Groups, S3, RDS, or any AWS security-related resources.
+description: AWS infrastructure security best practices with Terraform examples covering IAM, Security Groups, S3, RDS, and VPC design. Use when configuring security policies, reviewing infrastructure code, or hardening AWS resources. Trigger phrases: 'aws security', 'iam policy', 's3 security', 'security group', 'AWSセキュリティ', 'セキュリティグループ'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: infrastructure
+  tags: [aws, security, terraform, iam, vpc]
 ---
 
 # AWS Security Best Practices (Terraform)

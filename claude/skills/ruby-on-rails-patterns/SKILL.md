@@ -1,6 +1,11 @@
 ---
 name: ruby-on-rails-patterns
-description: Ruby on Rails design patterns including Service Objects, Form Objects, and layered architecture. Use when implementing business logic, complex validations, or API serialization.
+description: Ruby on Rails design patterns including Service Objects, Form Objects, Query Objects, and layered architecture. Use when implementing business logic, complex validations, or API serialization in Rails applications. Trigger phrases: 'rails patterns', 'service objects', 'form objects', 'Rails設計', 'サービスオブジェクト'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: development
+  tags: [ruby, rails, design-patterns, service-objects]
 ---
 
 # Ruby on Rails Design Patterns

@@ -1,6 +1,11 @@
 ---
 name: repo-init
-description: Repository initialization utilities. Use when creating new projects, setting up gitignore, or initializing development environments.
+description: Repository initialization utilities for creating new projects including gitignore templates, directory structures, and initial configuration. Use when bootstrapping new repositories, setting up development environments, or standardizing project structure. Trigger phrases: 'repo init', 'new project', 'gitignore', 'project setup', 'リポジトリ初期化', 'プロジェクト作成'.
+metadata:
+  author: MoneyForest
+  version: 1.0.0
+  category: development-tools
+  tags: [git, initialization, templates, project-setup]
 ---
 
 # Repository Initialization
