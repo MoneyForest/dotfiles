@@ -58,14 +58,9 @@ check_nodejs() {
 }
 
 install_precommit() {
-  if ! command -v pip3 &>/dev/null; then
-    warn "pip3 not found. Skipping pre-commit installation"
-    return
-  fi
-
   if ! command -v pre-commit &>/dev/null; then
-    info "Installing pre-commit..."
-    pip3 install pre-commit
+    info "Installing pre-commit via Homebrew..."
+    brew install pre-commit
     info "pre-commit installed successfully"
   else
     info "pre-commit is already installed"
