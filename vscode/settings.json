@@ -118,9 +118,7 @@
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 16,
   "workbench.view.alwaysShowHeaderActions": true,
-  "yaml.schemas": {
-    "file:///Users/kanamori.shuhei/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
-  },
+  "yaml.schemas": {},
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },

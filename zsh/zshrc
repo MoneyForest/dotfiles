@@ -152,7 +152,7 @@ export AWS_REGION=ap-northeast-1
 export AWS_DEFAULT_REGION=ap-northeast-1
 
 # bun completions
-[ -s "/Users/shuheikanamori/.bun/_bun" ] && source "/Users/shuheikanamori/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -160,4 +160,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
-alias claude-mem='/Users/shuheikanamori/.bun/bin/bun "/Users/shuheikanamori/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+alias claude-mem="$HOME/.bun/bin/bun $HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"
