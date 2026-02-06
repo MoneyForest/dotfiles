@@ -55,6 +55,7 @@
       "Bash(gh release delete:*)"
     ]
   },
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
